@@ -1,0 +1,19 @@
+{
+  "name": "fable-arcade",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Thirteen browser games in a complexity ladder, with an anonymous progress service",
+  "scripts": {
+    "start": "node server/server.mjs",
+    "dev": "node server/server.mjs",
+    "check": "node tests/check.mjs",
+    "test:smoke": "node tests/smoke.mjs",
+    "test:e2e": "node tests/e2e.mjs",
+    "test:load": "node tests/load.mjs",
+    "test:copy": "node tests/copy-audit.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.65.0"
+  }
+}

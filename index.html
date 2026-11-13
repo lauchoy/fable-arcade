@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="description" content="The Thirteen: thirteen browser games in order of complexity. Play in your browser. Track your progress.">
+  <title>The Thirteen: thirteen browser games</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/host.css">
+</head>
+<body>
+  <div class="page-grain" aria-hidden="true"></div>
+  <div class="spine" aria-hidden="true"><span>THE THIRTEEN · THIRTEEN BROWSER GAMES · 01 TO 13</span></div>
+
+  <header class="rail">
+    <a class="brand" href="#top" aria-label="The Thirteen home">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="brand-name">The Thirteen</span>
+      <span class="brand-sub">thirteen browser games</span>
+    </a>
+    <div class="rail-right">
+      <span class="sync" id="sync" title="Progress sync status"><i></i><span id="syncText">Checking</span></span>
+      <button class="rail-btn player" id="playerBtn" title="Your anonymous progress code"><span class="mono" id="playerCode">········</span></button>
+      <button class="rail-btn solid" id="progressBtn">Progress <span class="count" id="clearCount">0/13</span></button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-left">
+        <p class="kicker"><span class="rule"></span> Thirteen prompts · thirteen games · simple to hard</p>
+        <h1>Thirteen games.<br><em>Simple to hard.</em></h1>
+        <p class="lede">Each game uses one Fable 5.2 demo prompt. We built the games in order of complexity. The first game had a 45 minute budget. The last game had a 210 minute budget. You can play every game in your browser.</p>
+        <div class="hero-actions">
+          <button class="btn-primary" id="continueBtn">Continue <span class="btn-sub" id="continueSub">Game 01</span><span class="arrow">→</span></button>
+          <a class="btn-quiet" href="#catalog">See all games ↓</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="plate">
+          <div class="plate-top"><span>Your progress</span><span>Games 01 to 13</span></div>
+          <div class="big-number">13</div>
+          <p class="plate-note">Each game runs in one browser page. You do not install software. You do not create an account. The site saves your scores under one random code.</p>
+          <div class="plate-stats" id="heroStats">
+            <div><b id="statCleared">0</b><span>Cleared</span></div>
+            <div><b id="statStars">0</b><span>Stars</span></div>
+            <div><b id="statPlays">0</b><span>Plays</span></div>
+          </div>
+          <div class="plate-foot"><span id="globalStats">Connecting to the server</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ladder" id="ladder" aria-label="Games in order of complexity">
+      <div class="section-head">
+        <div><p class="eyebrow">How we set the order</p><h2>Order by complexity</h2></div>
+        <p class="section-note">We used each source prompt. We read its time budget, its tools and its controls. The four groups are Simple, Medium, Complex and Most complex. The first game had a 45 minute budget. The last game had a 210 minute budget.</p>
+      </div>
+      <div class="steps" id="steps"></div>
+      <div class="tier-legend" id="tierLegend"></div>
+    </section>
+
+    <section class="catalog" id="catalog">
+      <div class="section-head catalog-head">
+        <div><p class="eyebrow">Play in order</p><h2>All games</h2></div>
+        <div class="catalog-tools">
+          <div class="filters" id="filters" role="group" aria-label="Filter games">
+            <button class="chip active" data-filter="all">All 13</button>
+            <button class="chip" data-filter="unplayed">Not started</button>
+            <button class="chip" data-filter="playing">In progress</button>
+            <button class="chip" data-filter="cleared">Cleared</button>
+          </div>
+          <label class="search"><span class="sr-only">Search games</span><input id="search" type="search" placeholder="Search games  /" autocomplete="off"></label>
+        </div>
+      </div>
+      <div class="cards" id="cards"></div>
+      <p class="empty" id="empty" hidden>No games match that search.</p>
+    </section>
+
+    <footer>
+      <div class="foot-left"><span class="foot-word">The Thirteen</span><p>This site has thirteen browser games. Nick Saraev wrote the Fable 5.2 demo prompts. We built one game from each prompt. Each card shows the source time budget and the source API token cost.</p></div>
+      <div class="foot-right">
+        <p><b>How progress works.</b> The games run in your browser. We save your scores, stars and milestones on this device. We send the same data to one small server. We use a random code. We do not ask for your name, email or password. We do not use advertising identifiers.</p>
+        <p class="foot-meta"><span id="footPlayers">—</span> · Pages on a CDN · One Node process for sync</p>
+      </div>
+    </footer>
+  </main>
+
+  <div class="scrim" id="scrim" hidden></div>
+  <aside class="drawer" id="drawer" aria-label="Your progress" aria-hidden="true">
+    <div class="drawer-head"><div><p class="eyebrow">Your record</p><h2>Progress</h2></div><button class="icon-btn" id="closeDrawer" aria-label="Close progress">×</button></div>
+    <div class="drawer-body">
+      <div class="record" id="record"></div>
+      <div class="tier-bars" id="tierBars"></div>
+      <h3>Games</h3>
+      <div class="record-rows" id="recordRows"></div>
+      <h3>Achievements</h3>
+      <div class="badges" id="badges"></div>
+      <h3>Your code</h3>
+      <div class="sync-card">
+        <p>The site stores your progress under one random code. Copy the code. Paste the code on another device. Then open this site. The site loads your saved progress.</p>
+        <div class="code-row"><code id="syncCode">···· ···· ···· ····</code><button class="mini-btn" id="copyCode">Copy</button></div>
+        <div class="restore-row"><input id="restoreInput" placeholder="Paste a code" autocomplete="off" spellcheck="false" maxlength="16"><button class="mini-btn" id="restoreBtn">Restore</button></div>
+        <p class="restore-status" id="restoreStatus"></p>
+      </div>
+      <h3>Top scores</h3>
+      <div class="leaderboard" id="leaderboard"><p class="muted">Loading scores.</p></div>
+    </div>
+  </aside>
+
+  <div class="gameview" id="gameview" hidden>
+    <div class="game-bar">
+      <button class="icon-btn back" id="gameBack" aria-label="Back to the arcade">←</button>
+      <div class="game-id"><span class="mono" id="gameRank">RANK 01/13</span><b id="gameTitle">—</b><span class="game-sub" id="gameSub">—</span></div>
+      <div class="game-meta"><span class="mono" id="gameHint">—</span></div>
+      <div class="game-actions"><button class="mini-btn" id="gameOpen" title="Open in a new tab">Open ↗</button><button class="mini-btn" id="gameRestart" title="Restart this game">Restart ↻</button></div>
+    </div>
+    <div class="game-frame"><iframe id="gameFrame" title="Game" allow="pointer-lock; fullscreen; autoplay" referrerpolicy="no-referrer"></iframe></div>
+  </div>
+
+  <div class="host-toast" id="hostToast" role="status" aria-live="polite"></div>
+
+  <script src="assets/manifest.js"></script>
+  <script src="assets/sdk.js"></script>
+  <script src="assets/posters.js"></script>
+  <script src="assets/host.js"></script>
+</body>
+</html>
