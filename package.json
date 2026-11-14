@@ -11,9 +11,16 @@
     "test:smoke": "node tests/smoke.mjs",
     "test:e2e": "node tests/e2e.mjs",
     "test:load": "node tests/load.mjs",
-    "test:copy": "node tests/copy-audit.mjs"
+    "test:copy": "node tests/copy-audit.mjs",
+    "test:probe": "node tests/67js-probe.mjs",
+    "test:completion": "node tests/67js-completion.mjs",
+    "test:logic": "node tests/scene-logic.mjs",
+    "test:computer": "node tests/computer-programs.mjs"
   },
   "devDependencies": {
     "playwright": "^1.65.0"
+  },
+  "dependencies": {
+    "67js": "npm:@codepawlhq/67js@^0.19.0"
   }
 }

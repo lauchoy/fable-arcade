@@ -11,7 +11,8 @@ vm.runInNewContext(fs.readFileSync(path.join(ROOT, 'assets/manifest.js'), 'utf8'
 const ids = sandbox.window.ARCADE_GAMES.map(g => g.id);
 const files = [
   'index.html', 'assets/host.js', 'assets/manifest.js', 'assets/sdk.js',
-  ...ids.map(id => `games/${id}/game.js`)
+  ...ids.flatMap(id => [`games/${id}/game.js`, `games/${id}/index.html`]),
+  ...['scene-runtime', 'products', 'river', 'films', 'gallery', 'computer', 'worlds'].map(name => `games/shared/${name}.js`)
 ];
 const BANNED = /\b(cabinet|ladder|machines?|journey|voice|handmade|blazing|timetable|soul|magic|heart|whisper|dance|dances|danced|sing|sings|seduce|seductive|seduction| lust |tempt|enchanted|dream|dreams|delight|delightful|alchemy|poem|poetic|plainly|simply|really|very|quite|rather|somewhat|of course|in order to|at the end of the day)\b/i;
 const PASSIVE = /\b(is|are|was|were|been|being)\s+[a-z]+(ed|en|wn|nt)\b/i;

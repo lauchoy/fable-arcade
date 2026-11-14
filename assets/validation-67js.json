@@ -1,0 +1,35 @@
+{
+  "date": "2026-11-13",
+  "engineVersion": "0.19.0",
+  "static": { "games": 13, "errors": 0, "warnings": 0 },
+  "copy": { "files": 37, "flags": 0, "certification": false },
+  "browser": {
+    "fullSuitePassed": 14,
+    "fullSuiteTotal": 14,
+    "gameCompletions": 13,
+    "actualGameInput": 13,
+    "frozenFrameChecks": 13,
+    "mobile390pxChecks": 13,
+    "heldTouchMovementChecks": 3,
+    "hostSyncAndRestore": true,
+    "computerProgramsAt320px": 7,
+    "finalFocusedReruns": ["shareware-1996", "tile-river", "under-the-glass", "box-fort", "breakwater"],
+    "mobileTileCornerTaps": 4
+  },
+  "capacity": {
+    "transport": "local loopback",
+    "concurrentClients": 48,
+    "players": 100000,
+    "writes": 100000,
+    "reads": 20000,
+    "errors": 0,
+    "writeSeconds": 7.914,
+    "readSeconds": 0.646,
+    "writeRate": 12635.835228708618,
+    "readRate": 30959.752321981425,
+    "databaseAndWalBytes": 44719752,
+    "productionCapacityGuarantee": false
+  },
+  "notRun": ["real GPU performance benchmark", "Docker build", "production deployment"],
+  "scope": "Procedural 3D prototypes; see README and HANDOFF-67JS for source-prompt feature gaps."
+}

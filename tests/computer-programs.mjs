@@ -1,0 +1,52 @@
+import { chromium } from 'playwright';
+import { spawn } from 'node:child_process';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+const root = path.resolve(import.meta.dirname, '..'), port = 8098;
+const server = spawn(process.execPath, ['server/server.mjs'], { cwd: root, env: { ...process.env, PORT: String(port), HOST: '127.0.0.1', DATA_DIR: fs.mkdtempSync(path.join(os.tmpdir(), 'fable-computer-')) }, stdio: 'pipe' });
+let browser;
+try {
+  for (let i = 0; i < 60; i++) { try { if ((await fetch(`http://127.0.0.1:${port}/api/health`)).ok) break; } catch {} await new Promise(r => setTimeout(r, 100)); }
+  browser = await chromium.launch({ headless: true });
+  const page = await browser.newPage({ viewport: { width: 320, height: 720 }, hasTouch: true, isMobile: true });
+  const errors = []; page.on('pageerror', e => errors.push(e.message));
+  await page.goto(`http://127.0.0.1:${port}/games/shareware-1996/index.html?os=1`);
+  await page.waitForFunction(() => window.__game?.frame > 0);
+  const app = name => page.locator('.os nav').getByRole('button', { name, exact: true }).click();
+  const button = name => page.locator('.os-content').getByRole('button', { name, exact: true }).click();
+  await app('Code'); await button('Run');
+  assert.match(await page.locator('.os-content pre').textContent(), /HELLO FROM POSTBOX/);
+  await page.getByLabel('Program', { exact: true }).fill('UNSAFE COMMAND');
+  await button('Run');
+  assert.match(await page.locator('.os-content pre').textContent(), /Line 1/);
+  await app('Tracker');
+  await page.getByLabel('Track 1 step 1', { exact: true }).click();
+  assert.equal(await page.evaluate(() => window.__game.state.notes[0][0]), false);
+  await button('Play or stop');
+  await page.waitForFunction(() => window.__game.state.beat > 0);
+  await button('Play or stop');
+  await app('Modem'); await button('Dial');
+  await page.getByLabel('Board command').fill('READ'); await button('Send command');
+  assert.match(await page.locator('.message').textContent(), /Mara:/);
+  await app('Orders'); await button('Print label');
+  await page.waitForFunction(() => window.__game.state.printed, null, { timeout: 15000 });
+  assert.equal(await page.evaluate(() => window.__game.state.spritePrinted), false);
+  await page.getByRole('button', { name: 'Use computer', exact: true }).click();
+  await page.locator('[data-pixel="68"]').tap();
+  await app('Game');
+  assert(await page.evaluate(() => [...document.querySelectorAll('.mini-token')].every(n => n.getBoundingClientRect().right <= document.querySelector('.mini-game').getBoundingClientRect().right)));
+  for (let i = 0; i < 12; i++) { await button('Move right'); await page.waitForTimeout(80); }
+  await page.waitForFunction(() => window.__game.state.gameWon);
+  assert.equal(await page.evaluate(() => window.__game.done), false, 'a label must not count as a sprite print');
+  await app('Print'); await button('Print listing');
+  await page.waitForFunction(() => window.__game.state.printed, null, { timeout: 15000 });
+  assert.equal(await page.evaluate(() => window.__game.done), false);
+  await page.getByRole('button', { name: 'Use computer', exact: true }).click();
+  await button('Print sprite');
+  await page.waitForFunction(() => window.__game.done, null, { timeout: 15000 });
+  assert(await page.evaluate(() => window.__game.scene.parts.some(p => p.name === 'pixel-68')));
+  assert.deepEqual(errors, []);
+  console.log('Seven computer programs passed at 320px. Label and listing prints do not replace the sprite objective.');
+} finally { await browser?.close(); server.kill('SIGTERM'); }

@@ -48,30 +48,26 @@ async function playGame(browser, g) {
     page.on('console', m => { if (m.type() === 'error' && errors.length < 20) errors.push('console: ' + m.text().slice(0, 240)); });
   }
   // A. The ?auto=1 attract bot plays an uninterrupted full run.
-  const ctx = await browser.newContext({ viewport: { width: 1280, height: 800 }, deviceScaleFactor: 1 });
+  const ctx = await browser.newContext({ viewport: { width: 640, height: 480 }, deviceScaleFactor: 1 });
   const page = await ctx.newPage();
   watch(page);
   try {
     await page.goto(`${BASE}/games/${g.id}/index.html?auto=1&seed=7`, { waitUntil: 'domcontentloaded', timeout: 30000 });
-    await page.waitForTimeout(1300);
+    await page.waitForFunction(() => window.__arcadeEnv?.frame > 0);
     const env = await page.evaluate(() => {
       const e = window.__arcadeEnv;
       if (!e) return null;
       const c = document.querySelector('#stage');
       let drew = false;
       if (c) {
-        const x = c.getContext('2d');
-        const d = x.getImageData(Math.floor(c.width * .35), Math.floor(c.height * .45), 1, 1).data;
-        const d2 = x.getImageData(Math.floor(c.width * .65), Math.floor(c.height * .35), 1, 1).data;
-        drew = d[0] !== d2[0] || d[1] !== d2[1] || d[2] !== d2[2] || c.width > 100;
+        const gl = c.getContext('webgl2');
+        drew = !!gl && c.width > 100 && !e.error;
       }
       return { frames: e.frame, fps: e.fps, w: e.w, h: e.h, attract: e.attract, drew, canvas: !!c };
     });
     if (!env) throw new Error('SDK never booted (window.__arcadeEnv missing)');
     result.frames = env.frames; result.fps = Math.round(env.fps); result.drew = !!env.drew;
     if (!env.canvas || env.w < 300 || env.h < 300) errors.push('canvas missing or too small');
-    if (env.frames < 8) warnings.push(`only ${env.frames} frames in 1.3s`);
-    if (env.fps < 20) warnings.push(`low measured fps: ${Math.round(env.fps)}`);
     await page.screenshot({ path: path.join(SHOTS, `${String(g.rank).padStart(2, '0')}-${g.id}-start.png`) });
     await page.waitForFunction(id => {
       try {
@@ -86,6 +82,13 @@ async function playGame(browser, g) {
       return d.games[id];
     }, g.id);
     result.state = { plays: state.plays, best: state.best, stars: state.stars, checkpoints: (state.checkpoints || []).length };
+    const final = await page.evaluate(() => {
+      const e = window.__game;
+      return { frames: e.frame, fps: Math.round(e.fps),
+        hiddenPartsPresent: e.recipe.nodes.filter(n => n.visible === false && n.geometry).every(n => e.scene.parts.some(p => p.name === n.id)) };
+    });
+    result.frames = final.frames; result.fps = final.fps;
+    if (!final.hiddenPartsPresent) errors.push('an authored hidden part is absent from the renderer');
   } catch (e) {
     errors.push('bot: ' + String(e.message || e).split('\n')[0].slice(0, 240));
   }
@@ -103,19 +106,44 @@ async function playGame(browser, g) {
   p2.on('console', m => { if (m.type() === 'error' && inputErrors.length < 20) inputErrors.push('console: ' + m.text().slice(0, 200)); });
   try {
     await p2.goto(`${BASE}/games/${g.id}/index.html?seed=7`, { waitUntil: 'domcontentloaded', timeout: 30000 });
-    await p2.waitForTimeout(450);
-    await p2.mouse.move(640, 400);
-    await p2.mouse.click(640, 400);
-    await p2.keyboard.press('Space');
-    await p2.keyboard.down('KeyW'); await p2.waitForTimeout(350); await p2.keyboard.up('KeyW');
-    await p2.keyboard.press('ArrowRight');
-    await p2.mouse.move(760, 430);
-    await p2.mouse.down({ button: 'right' }); await p2.mouse.move(820, 470); await p2.mouse.up({ button: 'right' });
-    await p2.mouse.wheel(0, 180);
-    await p2.waitForTimeout(650);
+    await p2.waitForFunction(() => window.__arcadeEnv?.frame > 0);
+    const firstButton = () => p2.locator('#controls button').first().click();
+    if (g.id === 'delphi') {
+      const p = await p2.evaluate(() => window.__game.project(window.__game.point('mark-0')));
+      await p2.mouse.click(p.x, p.y);
+    } else if (g.id === 'tile-river') await p2.getByRole('button', { name: 'Hint', exact: true }).click();
+    else if (['tarn', 'fast-lens', 'crystal-tumbler'].includes(g.id)) {
+      await p2.locator('#controls input').first().fill('0.8');
+    } else if (g.id === 'comb') {
+      await firstButton(); await p2.mouse.move(640, 200);
+    } else if (['many-hands', 'the-seed'].includes(g.id)) await firstButton();
+    else if (g.id === 'cork-gallery') {
+      const p = await p2.evaluate(() => window.__game.project(window.__game.point('target-2').map((v, i) => v + (i === 1 ? 0.4 : 0))));
+      await p2.mouse.click(p.x, p.y);
+    } else if (g.id === 'shareware-1996') {
+      await firstButton(); await p2.locator('[data-pixel="68"]').click();
+    } else {
+      await p2.keyboard.down('KeyW'); await p2.waitForTimeout(700); await p2.keyboard.up('KeyW');
+      await p2.keyboard.down('ArrowRight'); await p2.waitForTimeout(400); await p2.keyboard.up('ArrowRight');
+      await p2.mouse.move(640, 250); await p2.mouse.down(); await p2.waitForTimeout(700); await p2.mouse.up();
+    }
+    await p2.waitForFunction(id => {
+      const e = window.__game, s = e.state;
+      return id === 'delphi' ? s.scanned.length > 0
+        : id === 'tile-river' ? s.moves > 0
+        : id === 'tarn' ? s.strength === 0.8
+        : id === 'comb' ? s.fill > 0
+        : id === 'many-hands' ? !!s.jobs[0]
+        : id === 'the-seed' ? s.helped
+        : id === 'fast-lens' ? s.aperture === 0.8
+        : id === 'crystal-tumbler' ? Math.abs(s.angle - 0.8) < 0.01
+        : id === 'cork-gallery' ? s.fired > 0
+        : id === 'shareware-1996' ? s.drawn
+        : s.player[2] < 2.5 && s.fired > 0 && s.yaw > 0;
+    }, g.id, { timeout: 10000 });
     await p2.screenshot({ path: path.join(SHOTS, `${String(g.rank).padStart(2, '0')}-${g.id}-input.png`) });
     const after = await p2.evaluate(() => ({ frame: window.__arcadeEnv ? window.__arcadeEnv.frame : 0, started: window.__arcadeEnv ? window.__arcadeEnv.started : false }));
-    result.inputOk = after.frame > 5 && after.started;
+    result.inputOk = after.frame > 0 && after.started;
     if (!result.inputOk) errors.push('input page did not start or draw');
   } catch (e) { errors.push('input: ' + String(e.message || e).split('\n')[0].slice(0, 200)); }
   errors.push(...inputErrors);
@@ -129,10 +157,10 @@ async function frozenFrameTest(browser, g) {
   let ok = true;
   try {
     await page.goto(`${BASE}/games/${g.id}/index.html?t=4.2&seed=3`, { waitUntil: 'load', timeout: 20000 });
-    await page.waitForTimeout(400);
-    const a = await page.screenshot();
+    await page.waitForFunction(() => window.__game?.frame > 2);
+    const a = await page.locator('#stage').screenshot();
     await page.waitForTimeout(500);
-    const b = await page.screenshot();
+    const b = await page.locator('#stage').screenshot();
     ok = Buffer.compare(a, b) === 0;
   } catch (e) { ok = false; }
   await ctx.close();
@@ -140,16 +168,39 @@ async function frozenFrameTest(browser, g) {
 }
 
 async function responsiveTest(browser, g) {
-  const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2 });
+  const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, hasTouch: true, isMobile: true });
   const page = await ctx.newPage();
   const errors = [];
   page.on('pageerror', e => errors.push(e.message));
   let dims = null;
   try {
-    await page.goto(`${BASE}/games/${g.id}/index.html?t=2&seed=1`, { waitUntil: 'load', timeout: 20000 });
-    await page.waitForTimeout(600);
+    await page.goto(`${BASE}/games/${g.id}/index.html?seed=1`, { waitUntil: 'load', timeout: 20000 });
+    await page.waitForFunction(() => window.__game?.frame > 2);
     dims = await page.evaluate(() => { const e = window.__arcadeEnv; return e ? { w: e.w, h: e.h, frames: e.frame } : null; });
     if (!dims || dims.w > 400 || dims.frames < 3) errors.push('did not draw at 390px');
+    if (await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)) errors.push('mobile page overflows horizontally');
+    if (g.id === 'tile-river') {
+      const corners = await page.evaluate(() => {
+        const e = window.__game;
+        return [0, 4, 20, 24].map(i => e.project([(i % 5 - 2) * 1.16, (2 - Math.floor(i / 5)) * 1.16, 0.15]));
+      });
+      for (const p of corners) {
+        if (p.x <= 0 || p.x >= dims.w || p.y <= 0 || p.y >= dims.h) throw Error('a corner tile is outside the mobile view');
+        await page.touchscreen.tap(p.x, p.y);
+      }
+      await page.waitForFunction(() => window.__game.state.moves === 4);
+    }
+    if (['under-the-glass', 'box-fort', 'breakwater'].includes(g.id)) {
+      const button = page.getByRole('button', { name: 'Move forward', exact: true });
+      const box = await button.boundingBox();
+      const session = await ctx.newCDPSession(page);
+      await session.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x: box.x + box.width / 2, y: box.y + box.height / 2 }] });
+      await page.waitForTimeout(800);
+      await session.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+      if (!await page.evaluate(() => window.__game.state.player[2] < 2.8)) errors.push('touch forward control did not move the player');
+      await session.detach();
+    }
+    await page.screenshot({ path: path.join(SHOTS, `${g.id}-mobile.png`) });
   } catch (e) { errors.push(String(e.message)); }
   await ctx.close();
   return { id: g.id, errors };
@@ -226,7 +277,7 @@ try {
     '--disable-renderer-backgrounding', '--disable-features=CalculateNativeWinOcclusion'
   ] });
   console.log('THE THIRTEEN — browser suite\nserver up at ' + BASE + '\n');
-  const batchSize = 3;
+  const batchSize = 1;
   for (let i = 0; i < SELECTED.length; i += batchSize) {
     const batch = SELECTED.slice(i, i + batchSize);
     const rs = await Promise.all(batch.map(g => playGame(browser, g)));
@@ -239,10 +290,12 @@ try {
     }
   }
   // Deterministic ?t= freeze and 390px checks are sampled on a few builds.
-  const sample = SELECTED.filter((_, i) => i % 4 === 0);
-  const frozen = await Promise.all(sample.map(g => frozenFrameTest(browser, g)));
+  const sample = SELECTED;
+  const frozen = [];
+  for (const g of sample) frozen.push(await frozenFrameTest(browser, g));
   console.log('\nFrozen-frame ?t= checks: ' + frozen.map(f => `${f.id}:${f.frozen ? 'exact' : 'moving'}`).join('  '));
-  const mobile = await Promise.all(sample.map(g => responsiveTest(browser, g)));
+  const mobile = [];
+  for (const g of sample) mobile.push(await responsiveTest(browser, g));
   console.log('390px checks: ' + mobile.map(m => `${m.id}:${m.errors.length ? 'FAIL' : 'ok'}`).join('  '));
   if (!ids) {
     const host = await hostAndApiTest(browser);
@@ -253,7 +306,9 @@ try {
   const failed = results.filter(r => !r.completed || r.errors.length);
   fs.writeFileSync(path.join(SHOTS, 'report.json'), JSON.stringify({ results, frozen, mobile }, null, 2));
   console.log(`\n${results.length - failed.length}/${results.length} checks passed. Screenshots: ${SHOTS}`);
-  if (failed.length) { console.log('Failed: ' + failed.map(f => f.id).join(', ')); process.exitCode = 1; }
+  if (failed.length || frozen.some(f => !f.frozen) || mobile.some(m => m.errors.length)) {
+    console.log('Failed: ' + failed.map(f => f.id).join(', ')); process.exitCode = 1;
+  }
 } catch (e) {
   console.error('suite error', e);
   process.exitCode = 1;

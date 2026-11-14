@@ -1,0 +1,247 @@
+{
+  "engine": "67js",
+  "version": "0.19.0",
+  "method": "MCP scene_create, scene_inspect, scene_apply, scene_look, scene_export_web",
+  "scenes": [
+    {
+      "id": "delphi",
+      "sessionId": "96e347c2-ec6a-456d-8657-ae5a08a334b4",
+      "revision": 1,
+      "version": "0.19.0",
+      "counts": {
+        "nodes": 53,
+        "parts": 52,
+        "geometries": 6,
+        "materials": 12,
+        "vertices": 2616
+      },
+      "renderer": "Glaze WebGL2",
+      "reviewBackend": "cpu",
+      "review": "assets/scenes/delphi.png",
+      "recipe": "games/delphi/scene.json",
+      "method": "MCP scene_export_recipe",
+      "webExportStatus": "Blocked by job-store initialization failure; prior engine bundle retained"
+    },
+    {
+      "id": "tile-river",
+      "sessionId": "b823ab54-46ec-4313-bdd0-81c853f33b01",
+      "revision": 1,
+      "version": "0.19.0",
+      "counts": {
+        "nodes": 157,
+        "parts": 105,
+        "geometries": 6,
+        "materials": 11,
+        "vertices": 1913
+      },
+      "renderer": "Glaze WebGL2",
+      "reviewBackend": "cpu",
+      "exportBytes": 1921200,
+      "review": "assets/scenes/tile-river.png",
+      "recipe": "games/tile-river/scene.json"
+    },
+    {
+      "id": "tarn",
+      "sessionId": "b1a92a36-bcb9-4851-960b-d50bd2b86471",
+      "revision": 1,
+      "version": "0.19.0",
+      "counts": {
+        "nodes": 149,
+        "parts": 145,
+        "geometries": 6,
+        "materials": 11,
+        "vertices": 1879
+      },
+      "renderer": "Glaze WebGL2",
+      "reviewBackend": "cpu",
+      "review": "assets/scenes/tarn.png",
+      "recipe": "games/tarn/scene.json",
+      "method": "MCP scene_export_recipe",
+      "webExportStatus": "Blocked by job-store initialization failure; prior engine bundle retained"
+    },
+    {
+      "id": "comb",
+      "sessionId": "c30d759b-e352-44a2-8398-99c00bc5805e",
+      "revision": 1,
+      "version": "0.19.0",
+      "counts": {
+        "nodes": 52,
+        "parts": 50,
+        "geometries": 7,
+        "materials": 12,
+        "vertices": 3181
+      },
+      "renderer": "Glaze WebGL2",
+      "reviewBackend": "cpu",
+      "review": "assets/scenes/comb.png",
+      "recipe": "games/comb/scene.json",
+      "method": "MCP scene_export_recipe",
+      "webExportStatus": "Blocked by job-store initialization failure; prior engine bundle retained"
+    },
+    {
+      "id": "many-hands",
+      "sessionId": "56d41c5e-8ae9-43a4-8a8b-2acb8a8eeea3",
+      "revision": 1,
+      "version": "0.19.0",
+      "counts": {
+        "nodes": 96,
+        "parts": 87,
+        "geometries": 5,
+        "materials": 10,
+        "vertices": 1704
+      },
+      "renderer": "Glaze WebGL2",
+      "reviewBackend": "cpu",
+      "exportBytes": 1914236,
+      "review": "assets/scenes/many-hands.png",
+      "recipe": "games/many-hands/scene.json"
+    },
+    {
+      "id": "the-seed",
+      "sessionId": "6a8299c0-1ebc-425e-95e5-2e710b7594bf",
+      "revision": 1,
+      "version": "0.19.0",
+      "counts": {
+        "nodes": 45,
+        "parts": 42,
+        "geometries": 5,
+        "materials": 13,
+        "vertices": 1704
+      },
+      "renderer": "Glaze WebGL2",
+      "reviewBackend": "cpu",
+      "exportBytes": 1907804,
+      "review": "assets/scenes/the-seed.png",
+      "recipe": "games/the-seed/scene.json"
+    },
+    {
+      "id": "fast-lens",
+      "sessionId": "ffd594ab-4ae8-4941-b469-cb822dd007c7",
+      "revision": 1,
+      "version": "0.19.0",
+      "counts": {
+        "nodes": 299,
+        "parts": 288,
+        "geometries": 6,
+        "materials": 10,
+        "vertices": 4544
+      },
+      "renderer": "Glaze WebGL2",
+      "reviewBackend": "cpu",
+      "review": "assets/scenes/fast-lens.png",
+      "recipe": "games/fast-lens/scene.json",
+      "method": "MCP scene_export_recipe",
+      "webExportStatus": "Blocked by job-store initialization failure; prior engine bundle retained"
+    },
+    {
+      "id": "crystal-tumbler",
+      "sessionId": "7f945404-0880-4a4a-b9d4-5c76bf65ce78",
+      "revision": 1,
+      "version": "0.19.0",
+      "counts": {
+        "nodes": 83,
+        "parts": 81,
+        "geometries": 6,
+        "materials": 11,
+        "vertices": 1935
+      },
+      "renderer": "Glaze WebGL2",
+      "reviewBackend": "cpu",
+      "review": "assets/scenes/crystal-tumbler.png",
+      "recipe": "games/crystal-tumbler/scene.json",
+      "method": "MCP scene_export_recipe",
+      "webExportStatus": "Blocked by job-store initialization failure; prior engine bundle retained"
+    },
+    {
+      "id": "cork-gallery",
+      "sessionId": "25e50ec2-7d3e-4016-ac28-5e3c529ac22d",
+      "revision": 1,
+      "version": "0.19.0",
+      "counts": {
+        "nodes": 101,
+        "parts": 84,
+        "geometries": 6,
+        "materials": 11,
+        "vertices": 6060
+      },
+      "renderer": "Glaze WebGL2",
+      "reviewBackend": "cpu",
+      "review": "assets/scenes/cork-gallery.png",
+      "recipe": "games/cork-gallery/scene.json",
+      "method": "MCP scene_export_recipe",
+      "webExportStatus": "Blocked by job-store initialization failure; prior engine bundle retained"
+    },
+    {
+      "id": "shareware-1996",
+      "sessionId": "6835f11b-bbc6-4f52-bee6-bdff2c97d610",
+      "revision": 1,
+      "version": "0.19.0",
+      "counts": {
+        "nodes": 590,
+        "parts": 589,
+        "geometries": 5,
+        "materials": 12,
+        "vertices": 1704
+      },
+      "renderer": "Glaze WebGL2",
+      "reviewBackend": "cpu",
+      "exportBytes": 2003841,
+      "review": "assets/scenes/shareware-1996.png",
+      "recipe": "games/shareware-1996/scene.json"
+    },
+    {
+      "id": "under-the-glass",
+      "sessionId": "44df07b5-bcb3-4762-94e0-232cbf7a4d64",
+      "revision": 1,
+      "version": "0.19.0",
+      "counts": {
+        "nodes": 130,
+        "parts": 119,
+        "geometries": 6,
+        "materials": 12,
+        "vertices": 3084
+      },
+      "renderer": "Glaze WebGL2",
+      "reviewBackend": "cpu",
+      "exportBytes": 1919750,
+      "review": "assets/scenes/under-the-glass.png",
+      "recipe": "games/under-the-glass/scene.json"
+    },
+    {
+      "id": "box-fort",
+      "sessionId": "1ced3091-d1df-42f9-8dec-dd170836c612",
+      "revision": 1,
+      "version": "0.19.0",
+      "counts": {
+        "nodes": 145,
+        "parts": 137,
+        "geometries": 5,
+        "materials": 12,
+        "vertices": 1704
+      },
+      "renderer": "Glaze WebGL2",
+      "reviewBackend": "cpu",
+      "exportBytes": 1922109,
+      "review": "assets/scenes/box-fort.png",
+      "recipe": "games/box-fort/scene.json"
+    },
+    {
+      "id": "breakwater",
+      "sessionId": "b8265da7-8df5-46b9-b0a7-102b83a16082",
+      "revision": 1,
+      "version": "0.19.0",
+      "counts": {
+        "nodes": 332,
+        "parts": 316,
+        "geometries": 5,
+        "materials": 12,
+        "vertices": 1704
+      },
+      "renderer": "Glaze WebGL2",
+      "reviewBackend": "cpu",
+      "exportBytes": 1949843,
+      "review": "assets/scenes/breakwater.png",
+      "recipe": "games/breakwater/scene.json"
+    }
+  ]
+}

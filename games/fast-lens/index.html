@@ -1,12 +1,21 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <title>The fast lens - The Thirteen</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="icon" href="../../assets/favicon.svg">
+<link rel="stylesheet" href="../shared/scene.css">
+<title>fast-lens - The Thirteen</title>
 </head>
 <body>
-  <script src="../../assets/sdk.js"></script>
-  <script src="./game.js"></script>
+<canvas id="stage" aria-label="Interactive 3D game"></canvas>
+<header class="hud"><div class="eyebrow">THE THIRTEEN / 67.JS</div><h1 id="title"></h1><p id="hint"></p></header>
+<section class="dock" aria-label="Game controls"><div id="status" role="status"></div><div id="controls"></div><div id="details"></div></section>
+<nav class="tools" aria-label="Game menu"><button id="back" type="button">All games</button><button id="restart" type="button">Restart</button><button id="sound" type="button">Enable sound</button></nav>
+<section id="end" hidden aria-label="Game result"><div class="end-card"><div class="eyebrow">PROGRESS SAVED</div><h2>Game cleared</h2><p id="end-score"></p><button id="again" type="button">Play again</button><button id="exit" type="button">Back to all games</button></div></section>
+<div id="loading" role="status">Loading the 3D scene.</div>
+<script src="../../assets/sdk.js"></script>
+<script src="../../assets/manifest.js"></script>
+<script type="module" src="./game.js"></script>
 </body>
 </html>

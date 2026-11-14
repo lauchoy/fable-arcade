@@ -8,7 +8,6 @@ const ROOT = path.resolve(import.meta.dirname, '..');
 const sandbox = { window: {} };
 vm.runInNewContext(fs.readFileSync(path.join(ROOT, 'assets/manifest.js'), 'utf8'), sandbox);
 const GAMES = sandbox.window.ARCADE_GAMES;
-const FPS = new Set(['under-the-glass', 'box-fort', 'breakwater']);
 const errors = [], warnings = [], notes = [];
 function check(ok, msg) { if (!ok) errors.push(msg); }
 
@@ -31,24 +30,37 @@ for (const g of GAMES) {
   check(h.includes('../../assets/sdk.js'), `${g.id}: html is missing the SDK script`);
   check(h.includes('./game.js'), `${g.id}: html is missing game.js`);
   check(!/<script[^>]+https?:/i.test(h), `${g.id}: html loads a remote script`);
-  if (FPS.has(g.id)) check(h.includes('../shared/raycaster.js'), `${g.id}: FPS build must load the raycaster`);
-  check(/\.\s*boot\s*\(/.test(s), `${g.id}: game never boots`);
+  check(h.includes('type="module"'), `${g.id}: entry must load an ES module`);
+  check(/\bboot\s*\(/.test(s), `${g.id}: game never boots`);
   check(s.includes(`${g.id}`), `${g.id}: game.js must use its own id`);
-  check(/\.\s*(finish|complete)\s*\(/.test(s), `${g.id}: no completion call`);
   check(/\bfetch\s*\(|XMLHttpRequest|https?:\/\//.test(s) === false, `${g.id}: network call in game.js`);
   check(!/requestAnimationFrame\s*\(/.test(s), `${g.id}: game drives its own RAF instead of the SDK`);
-  if (!/\bauto\b|\battract\b/i.test(s)) warnings.push(`${g.id}: no attract/bot handling found`);
-  if (s.split('\n').length < 110) warnings.push(`${g.id}: game.js is suspiciously short (${s.split('\n').length} lines)`);
-  notes.push(`${String(g.rank).padStart(2, '0')} ${g.id.padEnd(18)} ${String(s.split('\n').length).padStart(4)} lines  ${String(g.minutes).padStart(3)} min  $${g.cost.toFixed(2)}  tier ${g.tier}`);
+  const scenePath = path.join(folder, 'scene.json');
+  check(fs.existsSync(scenePath), `${g.id}: missing MCP scene`);
+  if (fs.existsSync(scenePath)) {
+    const scene = JSON.parse(fs.readFileSync(scenePath, 'utf8'));
+    const nodes = new Set(scene.nodes.map(n => n.id));
+    const geometries = new Set(scene.geometries.map(n => n.id)), materials = new Set(scene.materials.map(n => n.id));
+    check(nodes.size === scene.nodes.length, `${g.id}: duplicate scene node`);
+    check(scene.format === '67js.scene' && scene.schemaVersion === 1, `${g.id}: invalid scene format`);
+    check(scene.nodes.every(n => (!n.parent || nodes.has(n.parent)) && (!n.geometry || geometries.has(n.geometry)) && (!n.material || materials.has(n.material))), `${g.id}: broken scene references`);
+    check(scene.nodes.length <= 4096 && scene.geometries.length <= 256 && scene.materials.length <= 256, `${g.id}: exceeds MCP scene budget`);
+    check(fs.existsSync(path.join(ROOT, 'assets/scenes', g.id + '.png')), `${g.id}: missing MCP review`);
+    if (g.id === 'fast-lens') {
+      for (let i = 0; i < 13; i++) for (let j = 0; j < 16; j++) check(nodes.has(`ray-${i}-${j}`), `missing lens segment ${i}/${j}`);
+    }
+    notes.push(`${String(g.rank).padStart(2, '0')} ${g.id.padEnd(18)} ${scene.nodes.length} scene nodes`);
+  }
 }
 
-for (const f of ['assets/sdk.js', 'assets/host.js', 'assets/posters.js', 'games/shared/raycaster.js', 'server/server.mjs']) {
+for (const f of ['assets/sdk.js', 'assets/host.js', 'server/server.mjs', ...fs.readdirSync(path.join(ROOT, 'games/shared')).filter(f => f.endsWith('.js')).map(f => 'games/shared/' + f)]) {
   const r = spawnSync(process.execPath, ['--check', path.join(ROOT, f)], { encoding: 'utf8' });
   if (r.status !== 0) errors.push(`${f}: syntax error: ${(r.stderr || '').split('\n')[0]}`);
 }
 const server = fs.readFileSync(path.join(ROOT, 'server/server.mjs'), 'utf8');
 check(!/require\s*\(\s*['"](?!node:)/.test(server), 'server has third-party dependencies');
 check(/DatabaseSync/.test(server), 'server is missing its SQLite store');
+check(fs.existsSync(path.join(ROOT, 'assets/67js/67.module.js')), 'missing vendored 67.js renderer');
 
 console.log('THE THIRTEEN — static checks');
 console.log(notes.join('\n'));

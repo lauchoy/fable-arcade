@@ -31,12 +31,10 @@
   var state = { filter: 'all', query: '', current: null, dirty: false, syncTimer: null, restoreArmed: false, renderQueued: false };
   var posters = {};
 
-  /* ---------------- posters, drawn once --------------------------------- */
+  /* ---------------- MCP scene review pictures --------------------------- */
   function buildPosters() {
     G.forEach(function (g) {
-      var c = document.createElement('canvas');
-      window.Posters.draw(c, g);
-      posters[g.id] = c.toDataURL('image/png');
+      posters[g.id] = 'assets/scenes/' + g.id + '.png';
     });
   }
 

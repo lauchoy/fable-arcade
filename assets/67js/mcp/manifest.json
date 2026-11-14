@@ -1,0 +1,852 @@
+{
+  "schemaVersion": 1,
+  "packageName": "@codepawlhq/67js",
+  "packageVersion": "0.19.0",
+  "sourceCommit": "3261feaaef13cc7ab1efe603b9dd8925e5d508c0",
+  "sourceDirty": false,
+  "nodeTarget": "node20",
+  "buildTool": {
+    "name": "vite",
+    "version": "8.3.5"
+  },
+  "externalDependencies": [
+    {
+      "name": "playwright-core",
+      "version": "1.64.1"
+    }
+  ],
+  "dependencies": [
+    {
+      "name": "@modelcontextprotocol/core",
+      "version": "2.4.0",
+      "license": "Apache-2.0",
+      "licenseFiles": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "@modelcontextprotocol/server",
+      "version": "2.4.0",
+      "license": "Apache-2.0",
+      "licenseFiles": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "gl-matrix",
+      "version": "3.4.4",
+      "license": "MIT",
+      "licenseFiles": [
+        "LICENSE.md"
+      ]
+    },
+    {
+      "name": "three",
+      "version": "0.187.0",
+      "license": "MIT",
+      "licenseFiles": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "ws",
+      "version": "8.22.1",
+      "license": "MIT",
+      "licenseFiles": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "zod",
+      "version": "4.6.7",
+      "license": "MIT",
+      "licenseFiles": [
+        "LICENSE"
+      ]
+    }
+  ],
+  "embeddedDependencies": [
+    {
+      "name": "content-type",
+      "version": "1.0.5",
+      "bundledBy": "@modelcontextprotocol/server@2.4.0",
+      "licenseFile": "licenses/mcp/content-type-1.0.5.txt",
+      "licenseSha256": "5ca53699c2beb1e1e33ce17a0574a6c85ad112b825e085b4506ff61736b6818b"
+    }
+  ],
+  "licenseGaps": [],
+  "outputs": [
+    {
+      "filename": "preview.js",
+      "bytes": 53845,
+      "sha256": "adcd3337e23b85c6c2f5a189b7ed2dfe4f3d7963a1485e5feff10b0f08ed2a21"
+    },
+    {
+      "filename": "server.mjs",
+      "bytes": 921332,
+      "sha256": "c0d7ca3b96af04705e0b11b9729dffc232e96170900daf52bc770b7c66e00c45"
+    },
+    {
+      "filename": "LICENSES.md",
+      "bytes": 31742,
+      "sha256": "8ed147aca4cb09a71feb467dadd65b599e0c82fd6c13fedd5edccc313e07d4d0"
+    }
+  ],
+  "previewChunks": [
+    {
+      "filename": "agent-asset-CLvmMoP-.js",
+      "bytes": 40357,
+      "sha256": "2372862ba7c6a1bf29afc4115529268d6d0c6dc8e70015080dc8e22a6da5fa01"
+    },
+    {
+      "filename": "agent-bake-Bzy_DoA-.js",
+      "bytes": 24067,
+      "sha256": "7bb9bed59a3779fe46978573dd809ec8bf5a32d893beab8d93160dff1831b933"
+    },
+    {
+      "filename": "agent-bake-gpu-ByNLcaSe.js",
+      "bytes": 1602,
+      "sha256": "4db2195d806b6c44da23d9818431c466aa2de7f82a08ece19b028a452b8d2b27"
+    },
+    {
+      "filename": "agent-cloth-CPqRtVap.js",
+      "bytes": 15799,
+      "sha256": "ea30ccc55c6d2d13fa589e7d9815eba61a83aee549c9a4be9990f013783c86ef"
+    },
+    {
+      "filename": "agent-crowd-jirAOlGK.js",
+      "bytes": 6647,
+      "sha256": "916a640ff5e3c5f8ab980d6f3041dd33b860c78c16433309994ce6a90e260716"
+    },
+    {
+      "filename": "agent-drive-BuJkaiLG.js",
+      "bytes": 2516,
+      "sha256": "c51ebea2d1b8c35070c93063fb03e81656252c18ca7fa14699b257d9796319ef"
+    },
+    {
+      "filename": "agent-drive-schema-Bd2Wmwiu.js",
+      "bytes": 6354,
+      "sha256": "6e05e769372cfa3c3c78d8a3dd0d4e008d3cc2fe3bb62dbd73f637e13c190d77"
+    },
+    {
+      "filename": "agent-ground-COys_PDT.js",
+      "bytes": 2679,
+      "sha256": "60d170de410c617b31ab2efc4ace97202c72a9d371b342ba82766b38c6558131"
+    },
+    {
+      "filename": "agent-mesh-C9R6qW3Q.js",
+      "bytes": 25081,
+      "sha256": "44e11d9d8aec36ceb9e8f84d5068961000dd0040fc194ac54d5707786be3f453"
+    },
+    {
+      "filename": "agent-mesh-engine-Cmy9Ui2Z.js",
+      "bytes": 7740,
+      "sha256": "aaa5082f435e62e8849eb736d1b99e8c680df7d213df743f57a0d27c244d90e1"
+    },
+    {
+      "filename": "agent-motion-bake-BrmNEn6a.js",
+      "bytes": 7369,
+      "sha256": "dd6e78af86c6f70861bd8bb06d360e00adbf65e0d01e12f4c09c1b0c0db1d261"
+    },
+    {
+      "filename": "agent-motion-TDwEQljr.js",
+      "bytes": 94811,
+      "sha256": "a3acd1a2857958546a92ab1b06a386925887ff71eb7f5f43171c5eafd2fbe23a"
+    },
+    {
+      "filename": "agent-navigation-BigMB6Zo.js",
+      "bytes": 2921,
+      "sha256": "8f64a36e313d72977365c52e92f2a187b79a849c71755d38b602c7db5b26c47b"
+    },
+    {
+      "filename": "agent-particles-D-iE1_4g.js",
+      "bytes": 36767,
+      "sha256": "521d543f978ca59f0706016b60a41fc88ec29a1b3b30e7bf3ab252c626320016"
+    },
+    {
+      "filename": "agent-physics-PQ082ZCQ.js",
+      "bytes": 28713,
+      "sha256": "e43b5aa3ab9a3f0392e11d5f15b14337fd891b13cd9eec93c2b1ff8c7377d9ac"
+    },
+    {
+      "filename": "agent-recipe-checks-UYhtNllK.js",
+      "bytes": 2437,
+      "sha256": "59ef5fa04493ab8d0806b03db90ad54ab30a01fa3b789bffcba6c8dee7aa00c5"
+    },
+    {
+      "filename": "agent-reflections-nUuy-7Jz.js",
+      "bytes": 1648,
+      "sha256": "4178efe5f80967912c90f606496ee1d43bb7a6ab9fe089d971085755801f8bb9"
+    },
+    {
+      "filename": "agent-relations-Cg-Icf9e.js",
+      "bytes": 8513,
+      "sha256": "b2dc46cd0308e5b0c92da7aaf7961335f6e61b04418cfb1a7ec1e4cc883c1ae5"
+    },
+    {
+      "filename": "agent-scene-assets-CkuUJjd0.js",
+      "bytes": 17242,
+      "sha256": "647641e9f37db1ee432b917fbdf8ed6fdbbe1da643c827c2fd770fc11888fa4c"
+    },
+    {
+      "filename": "agent-scene-capabilities-BaawWMO1.js",
+      "bytes": 39529,
+      "sha256": "cebcb5ff3c84ab35433a387907148e45dbf2924725c63b2a33b46d38320f23e7"
+    },
+    {
+      "filename": "agent-scene-CsHMbgI1.js",
+      "bytes": 95497,
+      "sha256": "b9446d446bdc564864129c8476eebc49a9b94cf4ab62432f3f9c881407dddedc"
+    },
+    {
+      "filename": "agent-terrain-CBDmlZIM.js",
+      "bytes": 2039,
+      "sha256": "3ad8f25d72319a61ae4f4e4c9b753a58522bab1db0fcfd0046a6f73d429dcbbe"
+    },
+    {
+      "filename": "agent-vegetation-fdpfN8ZM.js",
+      "bytes": 14177,
+      "sha256": "decf650d12873f331ec5b2263b1a4b371de8ab4af34d1144f86e31001417a5c7"
+    },
+    {
+      "filename": "animation-CO9Tq0E0.js",
+      "bytes": 15796,
+      "sha256": "bffc56e57c1a8b63f8d1044328d0bf81409d25c6b2ced1b0861f278c7a8fd62b"
+    },
+    {
+      "filename": "budget-DiDbAzh2.js",
+      "bytes": 3317,
+      "sha256": "f717f1e44d26ab900c6d35c8c6885b669fd32d1bcca944ef8121060fb5576cad"
+    },
+    {
+      "filename": "camera-DqWdI22s.js",
+      "bytes": 6496,
+      "sha256": "484c86dced39c1597f84168ecab2cb9fb3f490ba91dff292d256f26ba3283c68"
+    },
+    {
+      "filename": "camera-effects.js",
+      "bytes": 6770,
+      "sha256": "d4c339d9c3183cc22dec5025a4fb931550e7ab29cf3b1db76d03f34559a36314"
+    },
+    {
+      "filename": "camera-path-C8Pae8D4.js",
+      "bytes": 5788,
+      "sha256": "3ebcdfce2f9977e1e7f7f3caecf68abb1d78820f887a172f66c8787e7d1c8b96"
+    },
+    {
+      "filename": "cascaded-shadows.js",
+      "bytes": 12581,
+      "sha256": "212bc16dd4ce7ff6836021466ff7ee1159611a92ee3878a4c779b375e7a7f2c6"
+    },
+    {
+      "filename": "closed-room-CB0A9B5C.js",
+      "bytes": 3435,
+      "sha256": "3b0e9e5642e63e1eec153ca5a4ca9eb34eb5905534e38da5bb735c6cac2d8601"
+    },
+    {
+      "filename": "cloth-BusI2riT.js",
+      "bytes": 22476,
+      "sha256": "7adb6149f5f0febd4f35197119b3f260ef074a211ac987a81c15b0d3963211dd"
+    },
+    {
+      "filename": "cloth-fields-Czh1DSet.js",
+      "bytes": 842,
+      "sha256": "931d740e3f34a6f7085af6c4047e69fb57a51e3bcb2d5fcb47d0ebb6bf0031d0"
+    },
+    {
+      "filename": "cooperative-KKQp9xLa.js",
+      "bytes": 691,
+      "sha256": "b1ef5a84f9ee8cedf200c7770f62ed58bc3112df1eb92f0388fc084189fb9511"
+    },
+    {
+      "filename": "coplanar-overlap-CfXTlSIo.js",
+      "bytes": 37682,
+      "sha256": "34bed89214cce600323f8a40ec5eb41b3c07248ea18d8ec75279924c0bce08c5"
+    },
+    {
+      "filename": "coplanar-overlap.js",
+      "bytes": 546,
+      "sha256": "99546ebf2c41c1b5f192ee6b830961f13513a7e2667594a274e3cd8b8c5ff97b"
+    },
+    {
+      "filename": "crowd-skinning.js",
+      "bytes": 10234,
+      "sha256": "697ce26bd018fe6271920f13d92aec5f1add2538632dbe0efdea14e880443ec0"
+    },
+    {
+      "filename": "depth-layer-Czrj5Xb7.js",
+      "bytes": 493,
+      "sha256": "4b5c38baf21fdd4eb79572048cc74d6e7f83e1f4ced89367fb0ce950ac30d187"
+    },
+    {
+      "filename": "environment-DsFt4psZ.js",
+      "bytes": 13195,
+      "sha256": "cd57d4322f4d5d6c1ab842c7091c6c8c81aacf8977aa24438537355684fdbe1d"
+    },
+    {
+      "filename": "environment-shading-BFHO3WeH.js",
+      "bytes": 4291,
+      "sha256": "edca4e3b43311363581a47376f8c9e012486330224d25032e1ae622a73b9e5e7"
+    },
+    {
+      "filename": "export-box-uv-CcWmsskb.js",
+      "bytes": 2186,
+      "sha256": "cde38093616594be2be934bdb168f4553627bc8609a669726a535fd8f292d951"
+    },
+    {
+      "filename": "export-Cb1LGQRe.js",
+      "bytes": 24325,
+      "sha256": "b34bee22eabf7d148d4c9e1bd30cc940d948f4d826c4eae29ba7b5f4b19ea8d7"
+    },
+    {
+      "filename": "expression-BKVPjtCf.js",
+      "bytes": 5901,
+      "sha256": "0ff7c98e85b5a92b362b0269198d036e0d127624d150a5a1601cd1cb7f1dc52b"
+    },
+    {
+      "filename": "field-error-BpFTmyMO.js",
+      "bytes": 966,
+      "sha256": "04017fd1f31a4cd18189ef02afad0a7a5c059b4421f00e6fc8f369828268a0db"
+    },
+    {
+      "filename": "film-timeline-BWbn7SRV.js",
+      "bytes": 4448,
+      "sha256": "77aba5d4af68c5559249c0efb57a52778a3a09829a18d8e1a3e22bf4107f2e61"
+    },
+    {
+      "filename": "float-output-CeXlmEEM.js",
+      "bytes": 2543,
+      "sha256": "6f8024186071e067df510a3fba07bcd40baa6f6c6b20e27f6873b6994cacd79b"
+    },
+    {
+      "filename": "floor-sky-visibility.js",
+      "bytes": 16490,
+      "sha256": "74cad8e22d55c82d4b53104cc979fff34b85057c458a20bd29ca70da24b931bb"
+    },
+    {
+      "filename": "fog-shader-DrNnJ44t.js",
+      "bytes": 33736,
+      "sha256": "894a195bbb97c230f84528ff0ddda882aa12927036d260ef1f061f8311eb73a5"
+    },
+    {
+      "filename": "fog-shader.js",
+      "bytes": 286,
+      "sha256": "dd7327b2666f27684b1a5020da4cc3929c4fc760db160814fcf3db67afba27b4"
+    },
+    {
+      "filename": "force-fields-ByNKkXEw.js",
+      "bytes": 4410,
+      "sha256": "e1149b5a428fffd9cb92b43ee3a54d12404b36d56f640c24f6e29f6e7e79a554"
+    },
+    {
+      "filename": "game-rules.js",
+      "bytes": 15657,
+      "sha256": "599e2b0b0399da0135e810ae2c02d23a085c764125120509f36ff4880e6e7519"
+    },
+    {
+      "filename": "game-setup-BnnKerON.js",
+      "bytes": 3049,
+      "sha256": "0f403b393d3254e39a9613acc2f63324b7c66f4bb50f9028bbd71d3747fe99cb"
+    },
+    {
+      "filename": "geometry-C1ukZMAo.js",
+      "bytes": 10415,
+      "sha256": "15f67a4561f1a46256933d6910e39eebd42f1f601dac2818594812c913393977"
+    },
+    {
+      "filename": "geometry-normals-DRzK4L7V.js",
+      "bytes": 1630,
+      "sha256": "b162d760e70bc34908b23f8ab5a0aa368687b8c3ce86adf12a723d783383abb9"
+    },
+    {
+      "filename": "gl-program-DIc2K8ep.js",
+      "bytes": 2149,
+      "sha256": "b7538e9431c9ac911ec78992d06a2997467a3c8ca53d5631764c5dd1402aa501"
+    },
+    {
+      "filename": "gltf-ChcvILu4.js",
+      "bytes": 88858,
+      "sha256": "349610a2b8dba214aaa5bd70db0b38e5708d2689f70d77a975c8914001d738b3"
+    },
+    {
+      "filename": "gltf-fallbacks-mRqg47AF.js",
+      "bytes": 2258,
+      "sha256": "424cd5a5f1f2e1f1d96ae5578be907cf37155f9806f2f893518f462db061b3ae"
+    },
+    {
+      "filename": "gltf-layers-GG4P9DPs.js",
+      "bytes": 2687,
+      "sha256": "6c0b3f87e80541f7bfbb64fa62566424854eecf04094e883bb7e8b641935f50d"
+    },
+    {
+      "filename": "gltf-map-resample-DcqmvZPk.js",
+      "bytes": 6434,
+      "sha256": "ba87af6e3177bb046735b1fa5ab720bbd810ab039cce211206e6abeff1f39a16"
+    },
+    {
+      "filename": "gltf-meshopt-BGQViuu9.js",
+      "bytes": 29089,
+      "sha256": "da72ee99ce752c16c7771658550653630092abc985b550490175d915ca37c066"
+    },
+    {
+      "filename": "ground-bounce.js",
+      "bytes": 7522,
+      "sha256": "2a372a727b26a82efd6b30bba9824a6edf22189ad81c0a63db622721ebdfdf1b"
+    },
+    {
+      "filename": "hdri.js",
+      "bytes": 6056,
+      "sha256": "84e4b23f0977e33d5f0f644f8896dfa7b93052624f4fc29881b4ea8b1991f8d0"
+    },
+    {
+      "filename": "kernel-offload-A_sD9y-z.js",
+      "bytes": 4862,
+      "sha256": "499d6d6dbfd17cff8dd509ba9efb1ad1cd8a2d94fe677c567e4759a7dbbad204"
+    },
+    {
+      "filename": "light-bake-gpu.js",
+      "bytes": 3282,
+      "sha256": "ace69623ae847b30254b04296b6887cc96405b32475eaec4355b9c21ccab81c6"
+    },
+    {
+      "filename": "light-bake.js",
+      "bytes": 29320,
+      "sha256": "36e86691ac226bfd35b3ebee24207b893da0b4e096c0ad0feb899d1b77cea164"
+    },
+    {
+      "filename": "light-link-bits-Bn3Ktwrl.js",
+      "bytes": 357,
+      "sha256": "9fab9ffd20d44c07e000c3d059295a362a9050a190e453be0bef5432c0a9bc89"
+    },
+    {
+      "filename": "light-linking.js",
+      "bytes": 2184,
+      "sha256": "2c60f8a32e6087edec1380441e3e24d2560ac360dfb35799b12f5859ef0cfb38"
+    },
+    {
+      "filename": "light-modules-Dt5NnxhT.js",
+      "bytes": 445,
+      "sha256": "707bb4f77ab900866517ff11a0680124842097cdd7b08f39b2d0c5ff0ba0d9ee"
+    },
+    {
+      "filename": "light-profile-BGXnJOGo.js",
+      "bytes": 2687,
+      "sha256": "65d9e4a452f819c70cf0d350bfd6c9eacee941afa8fa3a98edddb49a8406eec6"
+    },
+    {
+      "filename": "light-shapes.js",
+      "bytes": 6698,
+      "sha256": "ce94f4a134ae3e6ab647f8965a46fafdad34226d1706963055abc436d615396c"
+    },
+    {
+      "filename": "line-art.js",
+      "bytes": 17416,
+      "sha256": "ac7c050568d6ab315abf532640eb5fce1c6e7861938f19ab8c0a6460df3e7965"
+    },
+    {
+      "filename": "liquid-optics-DJcQhRHD.js",
+      "bytes": 784,
+      "sha256": "845a1c3ba560b5c773239a7211eae7d56868f6d6944655cf382aeddbc94fe696"
+    },
+    {
+      "filename": "liquid-shader-pyst1ACH.js",
+      "bytes": 9764,
+      "sha256": "98f01124e5c9ca6a5bf016096c87ab4da39efb250d4b0e3718341c21318e3202"
+    },
+    {
+      "filename": "liquid-shader.js",
+      "bytes": 324,
+      "sha256": "4fa26cb1dab949a93ec4475c56738f69fb83abc5ea194364dc3519c75b357a42"
+    },
+    {
+      "filename": "local-volume-parts-BNghoi6p.js",
+      "bytes": 3957,
+      "sha256": "c94916e48bf02b985eaf9db0f9ded2ae326875b2871d0d1818c89463b635183e"
+    },
+    {
+      "filename": "local-volumes-DW4FCqaw.js",
+      "bytes": 7041,
+      "sha256": "62d471160244246b624f38baf1478b95b31fc574d6d0c3f55ce33ec2e3dc6b73"
+    },
+    {
+      "filename": "look-catalog-BW-KqP3u.js",
+      "bytes": 1481,
+      "sha256": "cdb8abd802ed12e9984dce86f7076c9906a8ebad76e42b2bd6f1ba2c890267d1"
+    },
+    {
+      "filename": "mat3-BUCH0Dej.js",
+      "bytes": 1691,
+      "sha256": "f9823c562f1d963c171c72daf380bef72aaf919bb40213d332865faaeaa70e3f"
+    },
+    {
+      "filename": "mat4-BCZClxna.js",
+      "bytes": 10744,
+      "sha256": "5e451966bfe1d21f808df70d8f7d96ea732e6397085041ae5c3b8b9b54a3bf5e"
+    },
+    {
+      "filename": "material-graph-DN1JJGAL.js",
+      "bytes": 19944,
+      "sha256": "e3a58964a05dafad7e5f53fbe2e809e9839c80656ffbf47d402482be66cac2ea"
+    },
+    {
+      "filename": "material-layer-shaders.js",
+      "bytes": 12089,
+      "sha256": "42b78dab4417d620d2f689d0b69f7010d64d3aa60b4be4cec794c1339ab753ff"
+    },
+    {
+      "filename": "material-layers-C6j9cFSS.js",
+      "bytes": 3242,
+      "sha256": "87756679bad3f922c53354af7b2d34f9f49e3ac36a0a17b3ec97c130ab6316cb"
+    },
+    {
+      "filename": "material-patterns-CzYCxbD7.js",
+      "bytes": 10677,
+      "sha256": "e18a9175278fdbff3e62dca8a3415f61d7a5e8a530a14d24c1220cd4be1b53a7"
+    },
+    {
+      "filename": "material-snippet-GktRrUjO.js",
+      "bytes": 7511,
+      "sha256": "52495e25dd4ed9176e0f09c3c71ee774405fdce3a127c32bceb4fe229dc28eb6"
+    },
+    {
+      "filename": "material-texture-kit-DIh3eyE-.js",
+      "bytes": 3199,
+      "sha256": "0935aaa6945bea89f160567d9043102125a42cff08f3ee681a990241b962be9a"
+    },
+    {
+      "filename": "material-wear-BnrzUuEN.js",
+      "bytes": 13344,
+      "sha256": "c508bde14f889a777dbb99d49e6d9723b2c56ee69d0e3d778bb0cd488e1065bd"
+    },
+    {
+      "filename": "mesh-blend.js",
+      "bytes": 13655,
+      "sha256": "f1e477b4058ee9bf8386f7a396cca16a4b0669044ed3e0a74dd9f92fb7079099"
+    },
+    {
+      "filename": "mesh-lod-C7TM9Cy8.js",
+      "bytes": 5646,
+      "sha256": "1de13012e7ed9ca5043a24b482fda9ebc42b1b5e3795ab15528fb160c7d8a5b6"
+    },
+    {
+      "filename": "mesh-operations-ByLVkOhP.js",
+      "bytes": 7522,
+      "sha256": "fe3c5136d86980b5f0a27d855ffdd922b1d73c2ccd580075a6efe4e245b0b40c"
+    },
+    {
+      "filename": "mesh-query.js",
+      "bytes": 19600,
+      "sha256": "585face81832885561981899bd012fd70e1f250b7aa73f8765e561d496140213"
+    },
+    {
+      "filename": "mesh-recipe-BRDW7Uj_.js",
+      "bytes": 205155,
+      "sha256": "91269ed3af758261b7b8b8eb88ad9b6a9da043e76bf3eb2cd24919fe2e544858"
+    },
+    {
+      "filename": "mesh-uv-CPpcmeLo.js",
+      "bytes": 101757,
+      "sha256": "43e5a1d45b13040d60350260dec5f010865b8160446615b0dd098a1231f3087a"
+    },
+    {
+      "filename": "modeling-DzG5Achw.js",
+      "bytes": 54447,
+      "sha256": "63930c8154e0ca3794751d3304a9936bf9c42b342527cf2ea37c00c7a65d8b70"
+    },
+    {
+      "filename": "modeling.js",
+      "bytes": 510,
+      "sha256": "4d272b294b480b829670c927dfb0d952e78b0c5655e18477f3f81a5c196fd613"
+    },
+    {
+      "filename": "morph-CbizhGSZ.js",
+      "bytes": 7506,
+      "sha256": "1bec3b62683a34cf94c7212faa0f58a30500e8db57f2dabf5ca332d05c7a67bf"
+    },
+    {
+      "filename": "motion-validation-BCm1CqIb.js",
+      "bytes": 1737,
+      "sha256": "f821eef1478b3a7be0a8c151a288b7bb915a932a4c1f3676f49b42a16f1c557d"
+    },
+    {
+      "filename": "navmesh.js",
+      "bytes": 10115,
+      "sha256": "030ce3546fb2d2e08687b3db62e2c0e380db831fef45083fc478b9cc673be629"
+    },
+    {
+      "filename": "object-motion-blur-M2_MxYjg.js",
+      "bytes": 4341,
+      "sha256": "5c27d372e21bb225938d7fe9de4a8cd010bd6a5b60eec6ce239f27def69ed371"
+    },
+    {
+      "filename": "pack-input-CCebEGOF.js",
+      "bytes": 2875,
+      "sha256": "237f29a2dc30c44f7962ffc0a41996807f7c80881748db9db3bd5dfb7b0ec1cc"
+    },
+    {
+      "filename": "path-tracer-blue-noise-9F3bwgod.js",
+      "bytes": 2212,
+      "sha256": "d1beb80b60c00df870d049bba89c725ec3260db90af9107e56dd2a7d5f25551e"
+    },
+    {
+      "filename": "path-tracer-denoise-j_ATlMbO.js",
+      "bytes": 3020,
+      "sha256": "37e61581fdb56f59814ce43dc2868fb86def7154de88110b7f58d55a8f6f5189"
+    },
+    {
+      "filename": "path-tracer-gpu-Crg989H3.js",
+      "bytes": 11196,
+      "sha256": "402eb97337635696678e41a137118aa89550a72f9299b7c169fbd0c183e0a073"
+    },
+    {
+      "filename": "path-tracer-gpu-pack-DYL2MEaQ.js",
+      "bytes": 68568,
+      "sha256": "fff9dcdc2d48c9a9041ac035b19bc2712db1f12b94d60818a7505ed829918253"
+    },
+    {
+      "filename": "path-tracer-light-tree-BZYzVWXO.js",
+      "bytes": 7210,
+      "sha256": "446102250638eadf8265fed77fb634dd82cd29721b6fb47a984a56f03a561497"
+    },
+    {
+      "filename": "path-tracer-reprojection-BCea75Lv.js",
+      "bytes": 3579,
+      "sha256": "207c9ecb014e1828a20ee3d543b72c807cdaccc28976d098926256fef5e3b4c0"
+    },
+    {
+      "filename": "path-tracer-scene-Thw9vHJu.js",
+      "bytes": 10993,
+      "sha256": "fcfddf68528bf2d69ffd8c64038b35e131296cf6aa2783a0b55a5f2bb7d7d7fa"
+    },
+    {
+      "filename": "path-tracer-subsurface-Dyu5_MBA.js",
+      "bytes": 11016,
+      "sha256": "01037fa61ffc99b4cdee4cf7d7c6f821794da4e674e5d729adf9aba1672ab6d6"
+    },
+    {
+      "filename": "path-tracer-volume-MKWQbCqG.js",
+      "bytes": 4576,
+      "sha256": "ca5d37a22f47750834d962c7b5c9df65caf2b1ef652148011ab077bab5bcba4c"
+    },
+    {
+      "filename": "path-tracer-webgpu-oihoATYw.js",
+      "bytes": 86274,
+      "sha256": "5f880b94dc7e9bd6b8455e3db5311ad5bb74497c2d9a28c839b62b582cefb929"
+    },
+    {
+      "filename": "path-tracer.js",
+      "bytes": 30765,
+      "sha256": "1942df6b61133315c24aef4c83ae796c047ae173a78c7309eb1262c85d234b55"
+    },
+    {
+      "filename": "physical-sky-DdorcePx.js",
+      "bytes": 5568,
+      "sha256": "395887ffed3aa00374b4cbcbd51c2a71897a71d694aa935cb3441b1187bfe0ba"
+    },
+    {
+      "filename": "physics.js",
+      "bytes": 34046,
+      "sha256": "6a13e6dd83ac8b22a65223f95321457e2706f7e0d209b7d6708d11fe81a6ea18"
+    },
+    {
+      "filename": "post-steps-oKdX45f5.js",
+      "bytes": 21224,
+      "sha256": "24bc656682b6d886802f280fa8e1de7db2ee1bb43eb83505349946e66fa1c869"
+    },
+    {
+      "filename": "probe-trace-D5Is1f3E.js",
+      "bytes": 8852,
+      "sha256": "7100f66f5a40c9556109136d165c7b53da9a73ae347fdd22d34d9fba50493a5f"
+    },
+    {
+      "filename": "quat-Bl7gjwWK.js",
+      "bytes": 5179,
+      "sha256": "5a9563fa081ae1b344e01c9b768aabb92ce2a71c8c167f9f7014de358ccfb323"
+    },
+    {
+      "filename": "ray-query-CWJhfYYD.js",
+      "bytes": 2925,
+      "sha256": "2a8ab026352f6444271ad76da88c6596c5fe5836198db3201e6cca9837fc2753"
+    },
+    {
+      "filename": "reflection-probes-DZhA9ds5.js",
+      "bytes": 5016,
+      "sha256": "9d58b70a7ccd15770c4686a1f56c4b0d1a4a5c4a166cd56a11aeeeec23059b30"
+    },
+    {
+      "filename": "render-passes.js",
+      "bytes": 12631,
+      "sha256": "5ad3ce4d8532864ab9132604396ccdf8d76d29846afbf388cee8da521dbc52bb"
+    },
+    {
+      "filename": "renderer-ecLXY8uQ.js",
+      "bytes": 130371,
+      "sha256": "3988e5dcba9ea46a7043e71bffb4c9a9e2430ee29935eef87076310f99522bbd"
+    },
+    {
+      "filename": "retarget.js",
+      "bytes": 14695,
+      "sha256": "9c4ffee857e3b00ee8ce81efc8b7c2ada3ee051b85511ad3220af7650d598f98"
+    },
+    {
+      "filename": "reversed-depth.js",
+      "bytes": 6658,
+      "sha256": "e24ff9ebd5ab1b616ee3851eb4db7ceca2e9f1be5fce7bb4d6a003fd0351c8d6"
+    },
+    {
+      "filename": "rig-DvXCM9gw.js",
+      "bytes": 17953,
+      "sha256": "f452807c3e79fbd5584ddf6986e06ccd55279d9d6fec6e7dd0d57fd98187b156"
+    },
+    {
+      "filename": "rolldown-runtime-CvuOiBwx.js",
+      "bytes": 479,
+      "sha256": "5d8b010a74777a51b253ccc670f178a4a0f6e45e39ae3c45883d6c9c3aa3b758"
+    },
+    {
+      "filename": "scene-graph-D7m1CRQ0.js",
+      "bytes": 5864,
+      "sha256": "6e04b35f1dc2998295c4af028db3adeed0f80d318e6a32c2cffdf544326bbd1f"
+    },
+    {
+      "filename": "scene-query.js",
+      "bytes": 11471,
+      "sha256": "0cacb3987e61fd527b4cd90e440fd6ddcce6b073461d289ddf50c420d313433b"
+    },
+    {
+      "filename": "sculpt-strokes-DssfwB0s.js",
+      "bytes": 2312,
+      "sha256": "31124052116957d3f29d0e109623a32453f74a8945fa34fc007607f0178d54af"
+    },
+    {
+      "filename": "shader-registry-DHYkwAg5.js",
+      "bytes": 1657,
+      "sha256": "5728628de7c7c7180f24d95d11f09c62d98269698fbfd8c859ab07b9be7c4b06"
+    },
+    {
+      "filename": "shader-snippet-validator-BRFKy5ie.js",
+      "bytes": 11584,
+      "sha256": "3756e4334ae26c66d945ece2e15877b2b7367184ba2548f067ccc57e8e353621"
+    },
+    {
+      "filename": "shaders-C3WxnVo1.js",
+      "bytes": 40157,
+      "sha256": "acd5d3c836cc3392a3788214c088a816228da5960a311b7f2e9e7a5ebb11f4cc"
+    },
+    {
+      "filename": "shadow-light-Oy72milt.js",
+      "bytes": 919,
+      "sha256": "2a3ed0106c0b180609735a0b561213b08b56adc6d617eaa8224f3877440ccee9"
+    },
+    {
+      "filename": "skeleton-pose-DQgRHqAu.js",
+      "bytes": 31784,
+      "sha256": "b6d5a6e21239fb3c5f8217219bfea5e648a5f3f2b8feee2c95647ae2177d7158"
+    },
+    {
+      "filename": "skinning-DjFQA5hH.js",
+      "bytes": 8688,
+      "sha256": "319bde0438e41ec110dd3ad115a1e56d1ad1d708c1738b3c56fcc8e1ec644d36"
+    },
+    {
+      "filename": "subsurface-limits-DJNpVtVf.js",
+      "bytes": 1818,
+      "sha256": "755297504575a85ce42bd4e27e155bd679bef1cde3ae5493997b3f2e1afb72dc"
+    },
+    {
+      "filename": "subsurface-shader.js",
+      "bytes": 2993,
+      "sha256": "b2f5b97c273ab9d2dae603191b289108865ddf785894d2fd8dea76b3526642b2"
+    },
+    {
+      "filename": "surface-nets-Dwxp306C.js",
+      "bytes": 2341,
+      "sha256": "718d912421acbe8331aa52a6a846623d8dbe424c956e44b9456e5c32c9ca0b5a"
+    },
+    {
+      "filename": "terrain-CgaLbvb-.js",
+      "bytes": 15210,
+      "sha256": "9dde22557aa971cc04c482172b7c4653ec9b01ffe9bdfe7da72596858cb18acd"
+    },
+    {
+      "filename": "text-geometry-C4OblOZ_.js",
+      "bytes": 27449,
+      "sha256": "2e07e9455d6fd244844b3c9ce4321c20f660111b563cdd3ad5fdef66afe51f10"
+    },
+    {
+      "filename": "texture-update.js",
+      "bytes": 2982,
+      "sha256": "6fdb7d70d5b31bbce1c4bb460b8a764957645449640e41c6ef9eb538b8ed9920"
+    },
+    {
+      "filename": "triangle-bvh-MJBX52tQ.js",
+      "bytes": 6686,
+      "sha256": "7c11961dd37232fa8d56aaaa07c5c5ae62a1d70ce5ae996cb32e55e25182022e"
+    },
+    {
+      "filename": "triangle-math-CatOnS0A.js",
+      "bytes": 4968,
+      "sha256": "7a0458e4b9f438d532f02a4d3b3c69987a7794a217e6d4c339c967b5691790c2"
+    },
+    {
+      "filename": "update-part-vertices.js",
+      "bytes": 1781,
+      "sha256": "b6db4a2a1bc3caeae51dacbddf7fe9310b7478632576299873e028c96339b7e0"
+    },
+    {
+      "filename": "user-pass.js",
+      "bytes": 10611,
+      "sha256": "ccb4025be577b195b79f1053dceb099d51dfd5e838e04487c2716af7a375ac60"
+    },
+    {
+      "filename": "vec3-BRYC6f_g.js",
+      "bytes": 3591,
+      "sha256": "936fb9f5e173b4e65481e530e1c3e1a8d813c61d53b97e27bacefedc23ceedad"
+    },
+    {
+      "filename": "vegetation-geometry-9AtPgsCh.js",
+      "bytes": 5403,
+      "sha256": "021ce47a6679406f4055327e3770f29d0f867d866b68a53b2387247f89b54af7"
+    },
+    {
+      "filename": "vegetation-t1HZyQyp.js",
+      "bytes": 54002,
+      "sha256": "5b557a30a0f3cec4ebc7f499319fb6143adc6942e183fca39cee2e510bee3fa4"
+    },
+    {
+      "filename": "vehicle.js",
+      "bytes": 30874,
+      "sha256": "bf2c499a4bc86124f4bcb4296963f4e65a7164a6063e355db3cb808acd0f85a3"
+    },
+    {
+      "filename": "view-transform-names-CDWKtFlr.js",
+      "bytes": 424,
+      "sha256": "d544c19163c422b8cf55e28ab7bca26d8bf2c27e3ed040e8e0cb3aed854666e7"
+    },
+    {
+      "filename": "view-transform-shader.js",
+      "bytes": 4638,
+      "sha256": "a8ed1f0017251929bd513e5bd7400bb801b683a46c6a1f0d16c09d7ad9b94b18"
+    },
+    {
+      "filename": "view-transform.js",
+      "bytes": 5070,
+      "sha256": "c9d8ef2ab5ae5c3f62b29fd07d4c33bc78cb0b3ebee8a12e84872d4684fef5f3"
+    },
+    {
+      "filename": "volumetric-D8WftbY1.js",
+      "bytes": 3369,
+      "sha256": "4752a03f9854b25f88090c876c1337d94f3875c107772d07a125c0e4a8f84d90"
+    },
+    {
+      "filename": "wireframe-pass-Cgzhgxc_.js",
+      "bytes": 7514,
+      "sha256": "64c5566c27432bcd653a93d2024d696cfd838ad0031c6ca05a5a01b683a65e3f"
+    },
+    {
+      "filename": "world-material-shader.js",
+      "bytes": 20770,
+      "sha256": "5f31fb083825d64ab228b2dc1adb68e2ec0e9e7939521ef916c6f5c9cfa225e3"
+    }
+  ]
+}

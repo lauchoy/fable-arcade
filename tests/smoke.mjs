@@ -28,7 +28,7 @@ try {
   const info = await page.evaluate(() => ({
     cards: document.querySelectorAll('.card').length,
     steps: document.querySelectorAll('.step').length,
-    posters: [...document.querySelectorAll('.poster')].every(img => img.src.startsWith('data:image/png')),
+    posters: [...document.querySelectorAll('.poster')].every(img => img.src.includes('/assets/scenes/') && img.complete && img.naturalWidth > 0),
     code: document.getElementById('syncCode').textContent.trim(),
     sync: document.getElementById('syncText').textContent,
     font: getComputedStyle(document.querySelector('h1')).fontFamily,

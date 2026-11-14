@@ -1,0 +1,2 @@
+/*! 67js, MIT License, Copyright (c) 2026 CodePawl. Bundled gl-matrix: Copyright (c) 2015-2025, Brandon Jones, Colin MacKenzie IV, MIT License. Complete license texts and third-party notices: LICENSE and THIRD-PARTY-NOTICES.md at the package root. */
+export { t as COPLANAR_MINIMUM_AREA, n as COPLANAR_TOLERANCE, r as SUGGESTED_OFFSET, i as clearFlushParts, a as coplanarOverlapDiagnostics, o as findCoplanarOverlaps, s as flushLeftoverDiagnostics, c as installCoplanarDiagnostics, l as resolveFlushParts } from "./coplanar-overlap-CfXTlSIo.js";
